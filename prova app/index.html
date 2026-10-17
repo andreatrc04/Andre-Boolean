@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Sushi Counter</title>
+
+  <!-- Google Fonts: Bebas Neue, Plus Jakarta Sans e Material Symbols Rounded -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <!-- Foglio di stile CSS esterno -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Contenitore dell'applicazione per vincolo mobile-first -->
+  <div class="app-container">
+
+    <!-- ==========================================================================
+         INTESTAZIONE DELL'APP (HEADER SEMANTICO)
+         ========================================================================== -->
+    <header class="app-header">
+      <!-- Spazio bilanciato a sinistra per centratura del titolo -->
+      <div class="header-spacer" aria-hidden="true"></div>
+
+      <!-- Titolo principale con font display Bebas Neue -->
+      <h1 class="app-title">Sushi Counter</h1>
+
+      <!-- Pulsante profilo utente con icona Google Material Symbols -->
+      <button type="button" class="btn-profile" aria-label="Profilo utente">
+        <span class="material-symbols-rounded">person</span>
+      </button>
+    </header>
+
+    <!-- ==========================================================================
+         CORPO PRINCIPALE (MAIN SEMANTICO)
+         ========================================================================== -->
+    <main class="app-main">
+
+      <!-- SEZIONE 1: Badge introduttivo con istruzioni veloci -->
+      <section class="intro-section" aria-label="Introduzione">
+        <div class="subtitle-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          <span>Conta quanti pezzi di sushi mangi</span>
+        </div>
+      </section>
+
+      <!-- SEZIONE 2: Card con il contatore dei pezzi consumati -->
+      <section class="counter-section" aria-label="Contatore dei pezzi">
+        <div class="counter-card">
+          <div class="counter-accent-line" aria-hidden="true"></div>
+          <span class="counter-label">Pezzi Consumati</span>
+          <span class="counter-display" id="counter-display">0</span>
+        </div>
+      </section>
+
+      <!-- SEZIONE 3: Card interattiva con il nigiri sushi cliccabile -->
+      <section class="sushi-section" aria-label="Area interattiva sushi">
+        <div class="sushi-card" id="sushi-trigger" role="button" tabindex="0" aria-label="Aggiungi un pezzo di sushi">
+
+          <!-- Palcoscenico con illustrazione SVG del pezzo di sushi -->
+          <div class="sushi-stage">
+            <svg class="sushi-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+              <!-- Ombre del sushi sul piatto -->
+              <ellipse cx="100" cy="142" fill="#EBE7E4" opacity="0.65" rx="74" ry="12"></ellipse>
+              <ellipse cx="100" cy="140" fill="#D9D3CE" opacity="0.5" rx="56" ry="8"></ellipse>
+
+              <!-- Base di riso (Shari) -->
+              <g id="shari-rice">
+                <rect x="44" y="82" width="112" height="48" rx="24" fill="#FFFFFF" stroke="#262626" stroke-width="2.5">
+                </rect>
+                <ellipse cx="62" cy="96" rx="4" ry="2.5" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8"></ellipse>
+                <ellipse cx="78" cy="104" rx="4.5" ry="2.8" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+                <ellipse cx="95" cy="98" rx="4.2" ry="2.6" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8"></ellipse>
+                <ellipse cx="116" cy="102" rx="4" ry="2.5" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8"></ellipse>
+                <ellipse cx="134" cy="96" rx="4.2" ry="2.7" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+                <ellipse cx="68" cy="116" rx="4.5" ry="2.6" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+                <ellipse cx="90" cy="118" rx="4.2" ry="2.6" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+                <ellipse cx="112" cy="117" rx="4.5" ry="2.8" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+                <ellipse cx="128" cy="115" rx="4.2" ry="2.4" fill="#F3EFEA" stroke="#D4CCC5" stroke-width="0.8">
+                </ellipse>
+              </g>
+
+              <!-- Trancio di salmone (Neta) -->
+              <g id="neta-salmon">
+                <path d="M 26 84 C 24 54, 75 38, 172 64 C 180 74, 172 96, 154 96 C 118 92, 54 98, 26 84 Z"
+                  fill="#D68B3A" stroke="#262626" stroke-linejoin="round" stroke-width="2.5"></path>
+                <path d="M 32 76 C 54 48, 102 44, 164 68" fill="none" opacity="0.55" stroke="#FFFFFF"
+                  stroke-linecap="round" stroke-width="2.5"></path>
+                <!-- Striature bianche del salmone -->
+                <path d="M 62 52 L 48 86" opacity="0.75" stroke="#FFFFFF" stroke-linecap="round" stroke-width="3">
+                </path>
+                <path d="M 86 49 L 72 89" opacity="0.75" stroke="#FFFFFF" stroke-linecap="round" stroke-width="3">
+                </path>
+                <path d="M 110 51 L 96 92" opacity="0.75" stroke="#FFFFFF" stroke-linecap="round" stroke-width="3">
+                </path>
+                <path d="M 136 56 L 122 93" opacity="0.75" stroke="#FFFFFF" stroke-linecap="round" stroke-width="3">
+                </path>
+                <path d="M 158 64 L 146 88" opacity="0.7" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2.5">
+                </path>
+                <path d="M 42 66 C 70 50, 110 52, 140 60" fill="none" opacity="0.85" stroke="#FEE9D6"
+                  stroke-linecap="round" stroke-width="1.8"></path>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Testo didascalico con punto pulsante -->
+          <div class="sushi-instruction">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>Tap per aggiungere</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SEZIONE 4: Barra delle azioni (Reset e Salva sessione) -->
+      <section class="action-section" aria-label="Azioni contatore">
+
+        <!-- Bottone Reset contatore -->
+        <button type="button" class="btn-reset" id="btn-reset" title="Azzera contatore" aria-label="Azzera contatore">
+          <span class="material-symbols-rounded">restart_alt</span>
+        </button>
+
+        <!-- Bottone Salva sessione -->
+        <button type="button" class="btn-save" id="btn-save" aria-label="Salva sessione nell'archivio">
+          <span class="material-symbols-rounded bookmark-icon">bookmark</span>
+          <span class="btn-save-text">Salva Sessione</span>
+        </button>
+
+      </section>
+
+      <!-- SEZIONE 5: Archivio storico delle sessioni salvate (con label e input) -->
+      <section class="archive-section" aria-label="Archivio delle sessioni">
+
+        <div class="archive-header">
+          <span class="material-symbols-rounded archive-icon">history</span>
+          <h2 class="archive-title">Archivio Sessioni</h2>
+        </div>
+
+        <!-- Modulo per inserire una nota/nome ristorante opzionale prima di salvare -->
+        <div class="archive-input-group">
+          <label for="session-note" class="input-label">Nome Ristorante o Nota (opzionale):</label>
+          <input type="text" id="session-note" class="session-input" placeholder="Es. All You Can Eat, Poporoya..."
+            maxlength="40" autocomplete="off" />
+        </div>
+
+        <!-- Lista dinamica delle sessioni salvate -->
+        <ul class="archive-list" id="archive-list">
+          <li class="archive-empty" id="archive-empty">
+            Nessuna sessione salvata finora.
+          </li>
+        </ul>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Notifica fluttuante di feedback per l'utente -->
+  <div class="toast-notification" id="toast-notification">Notifica</div>
+
+  <!-- Script JavaScript esterno collegato prima della chiusura del body -->
+  <script src="script.js"></script>
+
+</body>
+
+</html>

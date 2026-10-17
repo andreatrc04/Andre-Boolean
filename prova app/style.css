@@ -1,0 +1,622 @@
+/* ==========================================================================
+   VARIABILI CSS GLOBALI (:root)
+   Definiamo colori, font, spaziature e ombre dell'applicazione
+   ========================================================================== */
+:root {
+  /* Colori Brand & Superfici */
+  --color-primary: #D68B3A;             /* Arancione salmone del brand */
+  --color-primary-hover: #c27b2e;       /* Variante hover del primario */
+  --color-dark: #000000;                /* Nero profondo per pulsanti e testi */
+  --color-dark-hover: #1f1f1f;          /* Variante hover pulsante nero */
+  --color-background-app: #ffffff;      /* Sfondo dell'app mobile */
+  --color-background-body: #f4f3f1;     /* Sfondo desktop neutro rilassante */
+  --color-surface-subtle: #f9f8f6;      /* Superfici secondarie e inset */
+  --color-text-main: #1a1c1b;           /* Testo principale scuro */
+  --color-text-muted: #8e8883;          /* Testo secondario disattivato */
+  --color-border: #efece6;              /* Bordi leggeri e discreti */
+  --color-pill-bg: #f5f5f4;             /* Sfondo badge superiore */
+  --color-pill-border: #e7e5e4;         /* Bordo badge superiore */
+
+  /* Tipografia */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Raggi di curvatura (Border Radius) */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Ombre (Elevation) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --shadow-sushi: 0 16px 36px rgba(214, 139, 58, 0.08), 0 4px 16px rgba(0, 0, 0, 0.03);
+  --shadow-sushi-hover: 0 20px 42px rgba(214, 139, 58, 0.14), 0 6px 18px rgba(0, 0, 0, 0.04);
+  --shadow-btn: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --shadow-header: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   RESET BASE & STRUTTURA MOBILE-FIRST
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--color-background-body);
+  font-family: var(--font-body);
+  color: var(--color-text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+
+/* Contenitore centrato per desktop, larghezza massima 420px */
+.app-container {
+  width: 100%;
+  max-width: 420px;
+  min-height: 100vh;
+  background-color: var(--color-background-app);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.06);
+}
+
+/* Configurazione per le icone Google Material Symbols */
+.material-symbols-rounded {
+  font-family: 'Material Symbols Rounded';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  user-select: none;
+}
+
+/* ==========================================================================
+   INTESTAZIONE (HEADER)
+   ========================================================================== */
+.app-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background-color: var(--color-primary);
+  box-shadow: var(--shadow-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+}
+
+/* Spaziatore sinistro per mantenere il titolo perfettamente centrato */
+.header-spacer {
+  width: 40px;
+  height: 40px;
+}
+
+.app-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 400;
+  user-select: none;
+}
+
+.btn-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-profile:hover {
+  background-color: #f5f5f4;
+}
+
+.btn-profile:active {
+  transform: scale(0.94);
+}
+
+.btn-profile .material-symbols-rounded {
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   CONTENITORE PRINCIPALE (MAIN)
+   ========================================================================== */
+.app-main {
+  flex: 1;
+  padding: 16px 20px 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   BADGE INFORMATIVO
+   ========================================================================== */
+.intro-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.subtitle-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-pill-bg);
+  border: 1px solid var(--color-pill-border);
+  border-radius: var(--radius-full);
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #57534e;
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   SEZIONE CONTATORE (CARD NUMERO)
+   ========================================================================== */
+.counter-section {
+  width: 100%;
+}
+
+.counter-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 14px 20px 10px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+/* Sottile linea di accento sfumata nella parte superiore della card */
+.counter-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(214, 139, 58, 0.45), transparent);
+}
+
+.counter-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+  user-select: none;
+}
+
+.counter-display {
+  font-family: var(--font-display);
+  font-size: 88px;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--color-dark);
+  margin: 2px 0;
+  user-select: none;
+  transition: transform 0.12s ease-out, opacity 0.15s ease;
+  display: block;
+}
+
+/* Animazione di rimbalzo al tocco */
+.counter-display.bump {
+  transform: scale(1.18);
+}
+
+/* Effetto dissolvenza al reset */
+.counter-display.fade {
+  opacity: 0.3;
+}
+
+/* ==========================================================================
+   PIATTO INTERATTIVO SUSHI
+   ========================================================================== */
+.sushi-section {
+  width: 100%;
+}
+
+.sushi-card {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sushi);
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  outline: none;
+}
+
+.sushi-card:hover {
+  box-shadow: var(--shadow-sushi-hover);
+}
+
+.sushi-card:active {
+  transform: scale(0.96);
+}
+
+.sushi-stage {
+  width: 220px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sushi-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.06));
+  transition: transform 0.15s ease;
+}
+
+.sushi-card:active .sushi-svg {
+  transform: scale(0.97);
+}
+
+.sushi-instruction {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: var(--color-dark);
+  transition: color 0.15s ease;
+}
+
+.sushi-card:hover .sushi-instruction {
+  color: var(--color-primary);
+}
+
+/* Punto luminoso pulsante */
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  animation: pulse-ring 1.6s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(214, 139, 58, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(214, 139, 58, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(214, 139, 58, 0);
+  }
+}
+
+/* ==========================================================================
+   BARRA DELLE AZIONI (RESET & SALVA)
+   ========================================================================== */
+.action-section {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn-reset {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background-color: #f5f5f4;
+  border: 1px solid #e7e5e4;
+  color: #44403c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-reset:hover {
+  background-color: #e7e5e4;
+  color: #000000;
+}
+
+.btn-reset:hover .material-symbols-rounded {
+  transform: rotate(-45deg);
+}
+
+.btn-reset:active {
+  transform: scale(0.94);
+}
+
+.btn-reset .material-symbols-rounded {
+  font-size: 24px;
+  transition: transform 0.25s ease;
+}
+
+.btn-save {
+  flex: 1;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-dark);
+  border: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-save:hover {
+  background-color: var(--color-dark-hover);
+}
+
+.btn-save:active {
+  transform: scale(0.98);
+}
+
+.btn-save .bookmark-icon {
+  color: var(--color-primary);
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.btn-save:hover .bookmark-icon {
+  transform: scale(1.15);
+}
+
+.btn-save .btn-save-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   SEZIONE ARCHIVIO SESSIONI
+   ========================================================================== */
+.archive-section {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-card);
+  margin-top: 6px;
+}
+
+.archive-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+}
+
+.archive-header .archive-icon {
+  color: var(--color-primary);
+  font-size: 22px;
+}
+
+.archive-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  font-weight: 400;
+}
+
+/* Modulo per annotare la sessione (label + input) */
+.archive-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.session-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--color-text-main);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.session-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(214, 139, 58, 0.15);
+}
+
+/* Elenco sessioni salvate */
+.archive-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.archive-empty {
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  padding: 12px;
+  font-style: italic;
+}
+
+.session-card {
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  animation: fadeInSlide 0.25s ease;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.session-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.session-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.session-date {
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.session-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.session-pieces {
+  background-color: #fff6ee;
+  color: var(--color-primary);
+  border: 1px solid rgba(214, 139, 58, 0.25);
+  font-family: var(--font-display);
+  font-size: 18px;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  line-height: 1.2;
+}
+
+.btn-delete-session {
+  background: none;
+  border: none;
+  color: #a8a29e;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.btn-delete-session:hover {
+  color: #dc2626;
+  background-color: #fee2e2;
+}
+
+.btn-delete-session .material-symbols-rounded {
+  font-size: 18px;
+}
+
+/* ==========================================================================
+   NOTIFICA FLUTTUANTE (TOAST FEEDBACK)
+   ========================================================================== */
+.toast-notification {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background-color: #1a1c1b;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), opacity 0.3s ease;
+  z-index: 200;
+  white-space: nowrap;
+}
+
+.toast-notification.active {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
